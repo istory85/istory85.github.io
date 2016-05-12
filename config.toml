@@ -1,0 +1,68 @@
+baseurl = "http://miantiao.ml/"
+languageCode = "en-us"
+title = "海岸突起山岚"
+theme = "blackburn"
+author = "qmc"
+copyright = "&copy; 2016. All rights reserved."
+canonifyurls = true
+paginate = 5
+
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
+[params]
+  # Shown in the home page
+  subtitle = "最喜欢夕阳西下的天空和落满叶的路,就像小时候那样一路跑下去"
+  brand = "Freedom"
+  googleAnalytics = "ssssss"
+  disqus = "istory85"
+  # CSS name for highlight.js
+  highlightjs = "androidstudio"
+  dateFormat = "02 Jan 2006"
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 0
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 1
+    identifier = "about"
+    url = "/about/"
+  [[menu.main]]
+    name = "Dairy"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 2
+    identifier = "dairy"
+    url = "/dairy/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 3
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "Topics"
+    pre = "<i class='fa fa-folder fa-fw'></i>"
+    weight = 4
+    identifier = "topic"
+    url = "/topics/"
+  [[menu.main]]
+    name = "Tags"
+    pre = "<i class='fa fa-tags fa-fw'></i>"
+    weight = 5
+    identifier = "tag"
+    url = "/tags/"
+
+[social]
+  # Link your social networking accouns to the side menu
+  # by entering your username or ID.
+  
+  weibo = "yoshiforshort"
+  github = "istory85"
