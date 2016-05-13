@@ -15,7 +15,7 @@ paginate = 5
   # Shown in the home page
   subtitle = "最喜欢夕阳西下的天空和落满叶的路,就像小时候那样一路跑下去"
   brand = "Freedom"
-  googleAnalytics = "ssssss"
+  googleAnalytics = "UA-77714604-1"
   #disqus = "istory85"
   # CSS name for highlight.js
   highlightjs = "androidstudio"
