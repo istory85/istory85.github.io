@@ -64,6 +64,6 @@ for i in range(4):
 
 `图片示例 `
 
-<code>
+```
 {{% fluid_img class="pure-u-1-1" src="/img/post/1111.jpg" alt="name?" %}}
-</code>
+```
