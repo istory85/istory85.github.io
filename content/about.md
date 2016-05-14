@@ -1,44 +1,39 @@
 +++
-date = "2016-01-03T13:12:48Z"
+date = "2016-05-14T17:12:48Z"
 draft = false
 title = "About"
 sidemenu = "true"
 +++
 
-## About me
+## 关于我
 
-Hi there!
+一zhi 特立（zhuang）独行（bi）的 90后，在奔三的路上一去不回头咯。
 
-My name is Yoshiharu Yamashita, Yoshi for short.
 
-I am originally from Japan but in 2001 I made one of the biggest decisions in my life and came to England to do a university degree course.
+### 关于生活
 
-Being so far from home was not easy to begin with but life in England has turned out to be better than I could ever have imagined when I made that decision.
+即便 以前的日子里，“我的生活和希望，总是相违背”
 
-I am currently living and working in Bristol, UK.
+可我 仍然相信，“生活不止眼前的苟且，还有诗和远方的田野”
 
-### Software Engineer
+### 关于工作
 
-That's my main job. I currently work on software tools to automatically check and correct video/audio problems in file-based media. In my role, I mainly code in C++ but I often get to use C#, JavaScript and Python as well, which I like.
+技能配搭：
 
-### Freelance Translator
++ 熟悉linux运维常识，会用shell，熟悉sqltie，mysql的使用
++ 熟悉HTML，CSS，了解javascript，了解bootstrap
++ 熟悉python和flask框架，了解django，golang
++ 了解TCP/IP协议，获得过CCNA，能熟练操作思科或华为交换路由设备
 
-I also carry out English to Japanese translations and proofreading for computer related areas, including
+工作经历：
 
-- GUIs
-- Technical user guides, website contents
-- Voice over for video tutorials
+1. 2014-2015 一家小公司的运维类工作（打杂？售后？）
 
-It's good to combine my language skills with computing.
-
-### Wannabe Freestyle Footballer
-
-I keep a football in my office and practice at lunch time. My current favourite place to practice is the alley at the back of my office off which there are several pubs. The surface is uneven and made of cobbles but I like it there because it's very quiet at lunch time.
 
 ## About this site
 
 - Generated using [Hugo](//gohugo.io), a fast and modern static website engine
-- Hosted from my GitHub [repository](//github.com/yoshiharuyamashita/yoshiharuyamashita.com)
+- Hosted from my GitHub [repository](//github.com/istory85/miantiao.ml)
 - Theme is based on Yahoo's Pure CSS layout [here](//purecss.io/layouts/side-menu/) (I've modified it so that it can be used with Hugo)
 - Icons are from [Font Awesome](//fontawesome.io/)
-- Fonts from [Google Fonts](//www.google.com/fonts)
+- Fonts from [360 Fonts](//www.useco.com/)
