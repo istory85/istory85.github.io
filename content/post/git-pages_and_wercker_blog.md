@@ -1,15 +1,14 @@
 +++
 date = "2016-05-14T20:35:23+08:00"
-description = "本篇文章是教大家用git-pages和wercker来写博客"
+description = "本篇文章是教大家用git-pages来写博客"
 draft = false
 tags = ["git-pages","wercker"]
-title = "以github-pages和wercker来写博客"
+title = "以github-pages来写博客"
 topics = ["blog"]
 
 +++
 
-#### 本篇文章旨在引领人们享受写作的乐趣，而不是“工欲善其事，必先利其器”
-
+本篇文章旨在引领人们享受写作的乐趣，而不是“工欲善其事，必先利其器”
 
 ### 背景以及准备工作
 
@@ -20,21 +19,25 @@ hugo是一个前docker重量级员工跳出来搞的一个静态网页生成器�
 wercker是一个以docker为基础的持续性代码部署云服务。
 好的，下面，我们开始吧:
 
-### 安装hugo，创建github项目分支，创建wercker帐号
+### 安装hugo
 
 由于我用的是centos_64位，所以在hugo的github上下载[hugo_0.15_linux_amd64.tar.gz](https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz)这个软件包。
 解压：
+
 ```
 $ tar -xzvf hugo_0.15_linux_amd64.tar.gz
 ```
+
 得到一个可执行的二进制go程序，改个短名字，如hugo，并把它放到/opt下，加入系统变量中
 编辑 /etc/profile
+
 ```
 $ mv hugo /opt
 $ vi /etc/profile
 $ export HUGOROOT=/opt
 $ export PATH=$PATH::$HUGOROOT
 ```
+
 然后就可以使用hugo来生成网站了,mysite是网站的路径
 
 ```
@@ -47,7 +50,7 @@ $ hugo new site mysite
 $ cd mysite
 ```
 
-在该目录下你可以看到以下几个目录和``config.toml``文件
+在该目录下你可以看到以下几个目录和config.toml文件
 
 ```
 + archetypes/ 
@@ -56,7 +59,8 @@ $ cd mysite
 + static/
   config.toml
 ```
-``config.toml``是网站的配置文件，包括``baseurl``, ``title``, ``copyright``等等网站参数。
+
+config.toml是网站的配置文件，包括baseurl, title, copyright等等网站参数。
 
 这几个文件夹的作用分别是：
 
@@ -71,7 +75,7 @@ Hugo提供了一些完整的主题可以使用，下载这些主题：
 $ git clone --recursive https://github.com/spf13/hugoThemes themes
 ```
 
-此时现成的主题存放在``themes/``文件夹中。
+此时现成的主题存放在themes/文件夹中。
 
 现在我们先熟悉一下Hugo，创建新页面：
 
@@ -79,8 +83,7 @@ $ git clone --recursive https://github.com/spf13/hugoThemes themes
 $ hugo new about.md
 ```
 
-进入``content/``文件夹可以看到，此时多了一个markdown格式的文件``about.md``，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。
-
+进入content/文件夹可以看到，此时多了一个markdown格式的文件about.md，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。
 
 我在页面中加入了一些内容，然后运行Hugo:
 
@@ -88,18 +91,18 @@ $ hugo new about.md
 $ hugo server -t hyde --buildDrafts
 ```
 
-``-t``参数的意思是使用hyde主题渲染我们的页面，注意到``about.md``目前是作为草稿，即``draft``参数设置为``true``，运行Hugo时要加上``--buildDrafts``参数才会生成被标记为草稿的页面。
+-t参数的意思是使用hyde主题渲染我们的页面，注意到about.md目前是作为草稿，即draft参数设置为true，运行Hugo时要加上--buildDrafts参数才会生成被标记为草稿的页面。
 在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。
 
 {{% fluid_img class="pure-u-1-1" src="/img/post/hugo-server-1.png" alt="name?" %}}
 
 
-注意观察当前目录下多了一个文件夹``public/``，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将``public/``里的文件上传就可以，这相当于是Hugo的输出。
+注意观察当前目录下多了一个文件夹public/，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将public/里的文件上传就可以，这相当于是Hugo的输出。
 
 
 ### 主题选择
 
-进入``themes/hyde``文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在``layouts/``和``static/``这两个文件内，选择好一个主题后，可以将``themes/``中的文件夹直接复制到``mysite/``目录下，覆盖原来的``layouts/``, ``static/``文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css, js, html等文件。
+进入themes/hyde文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是layouts/和static/这两个文件内，选择好一个主题后，可以将themes/中的文件夹直接复制到mysite/目录下，覆盖原来的layouts/, static/文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css, js, html等文件。
 
 我的博客模版是在Hugo作者spf13的[博客](http://spf13.com)基础上修改的。第一步，先去他的博客网站源码[主页](https://github.com/spf13/spf13.com)把整个项目clone下来
 
@@ -107,17 +110,17 @@ $ hugo server -t hyde --buildDrafts
 $ git clone git@github.com:spf13/spf13.com.git
 ```
 
-把项目中的``static/``和``layouts/``文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:
+把项目中的static/和layouts/文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:
 
 ```
 $ hugo server --buildDrafts -w
 ```
 
-这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数``-w``意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：
+这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：
 
 {{% fluid_img class="pure-u-1-1" src="/img/post/hugo-server-2.png" alt="name?" %}}
 
-我们尝试在他的主题基础上修改，找到``/layouts/partials/subheader.html``文件:
+我们尝试在他的主题基础上修改，找到/layouts/partials/subheader.html文件:
 
 ```html
 <header id="header">
@@ -145,15 +148,15 @@ $ hugo server --buildDrafts -w
 {{ template "_internal/disqus.html" . }}
 ```
 
-spf13在``/layouts/partials/disqus.html``中已经添加好了。
+spf13在/layouts/partials/disqus.html中已经添加好了。
 
-只需要去Disqus注册一个账号，然后在``config.toml``里加上：
+只需要去Disqus注册一个账号，然后在config.toml里加上：
 
 ```
 disqusShortname = "yourdisqusShortname"
 ```
 
-注意``-w``参数是不能监测``config.toml``里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。
+注意-w参数是不能监测config.toml里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。
 
 {{% fluid_img class="pure-u-1-1" src="/img/post/comments.png" alt="name?" %}}
 
@@ -175,9 +178,7 @@ $ pip install Pygments
 ```shell
 $ python get-pip.py
 ```
-
-Pygments的调用采用shortcodes实现，spf13里也写好了，在``/layouts/shortcode/highlight.html``里
-
+Pygments的调用采用shortcodes实现，spf13里也写好了，在/layouts/shortcode/highlight.html里
 
 ```
 {{ $lang := index .Params 0 }}
@@ -192,9 +193,9 @@ your code here.
 {{ % /highlight %}}
 ```
 
-这里为了避免以上两行被识别为代码高亮的标识，在``{{``和``%``之间多加了一个空格，实际使用的时候需要把空格去掉。
+这里为了避免以上两行被识别为代码高亮的标识，在 {{ 和 % 之间多加了一个空格，实际使用的时候需要把空格去掉。
 
-第二种方法比较简单，在``layouts/partials/header_includes.html``中加上：
+第二种方法比较简单，在layouts/partials/header_includes.html中加上：
 
 
 ```
@@ -215,17 +216,17 @@ your code here.
 
 ### 插入图片
 
-图片文件放在``static/media``文件中，插入图片：
+图片文件放在static/media文件中，插入图片：
 
 ```
 {{ % img src="/media/example.jpg" alt="example" %}}
 ```
 
-注意这里的``{{``和``%``之间也加上了空格，避免这行代码起作用，实际使用也需要把空格去掉。
+注意这里的 {{ 和 % 之间也加上了空格，避免这行代码起作用，实际使用也需要把空格去掉。
 
 ### 使用Mathjax
 
-在需要渲染公式的页面加入以下代码，比如``layouts/_default/single.html``文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入``layouts/partials/footer.html``文件里，保证所有生成的页面都有这几行代码。
+在需要渲染公式的页面加入以下代码，比如 layouts/_default/single.html 文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入``layouts/partials/footer.html``文件里，保证所有生成的页面都有这几行代码。
 
 ```html
 <script type="text/javascript"
@@ -240,17 +241,18 @@ Github pages分为两种：一种是项目主页，每个项目都可以有一�
 
 因为用户主页只能有一个，所以建议使用项目主页托管，不过我这里采用了用户主页，反正我也只用一个博客，使用个人主页作为Host也相对更简单一点。
 
-我们需要创建两个单独的repo，一个用于放Hugo的输入文件，即除了``public/``文件夹之外的所有文件，另一个放我们生成的静态网站，也就是``public/``的内容。
+我们需要创建两个单独的repo，一个用于放Hugo的输入文件，即除了 public/ 文件夹之外的所有文件，另一个放我们生成的静态网站，也就是 public/ 的内容。
 
 步骤如下：
 
-1. 在Github上创建repo ``<your-project>-hugo``，托管Hugo的输入文件。
-2. 创建repo ``<username>.github.io``，用于托管``public/``文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。
+1. 在Github上创建repo  <your-project>-hugo ，托管Hugo的输入文件。
+2. 创建repo  <username>.github.io ，用于托管 public/ 文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。
 3. clone your-project
 ```
 $ git clone <<your-project>-hugo-url>
 ```
 4. 进入your-project 目录
+
 ```
 $ cd <your-project>-hugo
 ```
@@ -262,8 +264,8 @@ $ rm -rf public
 ```
 $ git submodule add git@github.com:<username>/<username>.github.io.git public
 ```
-7. 添加.gitignore文件，文件中写``public/``，在同步``<your-project>-hugo``时会忽略public文件夹
-8. 下面是写好的一个script ``deploy.sh``，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。
+7. 添加.gitignore文件，文件中写 public/ ，在同步 <your-project>-hugo 时会忽略public文件夹
+8. 下面是写好的一个script  deploy.sh ，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。
 
 ```bash
 #!/bin/bash
@@ -304,7 +306,7 @@ cd ..
 
 Github pages还支持域名绑定，三个步骤：
 
-1. 在``<username>.github.io`` repo的跟目录下添加``CNAME``文件，文件里写上你的域名，不用加http://的开头。
+1. 在 <username>.github.io repo的跟目录下添加 CNAME 文件，文件里写上你的域名，不用加http://的开头。
 2. 记下http://username.github.io/ 的ip地址。
 ```
 $ ping username.github.io
@@ -314,7 +316,7 @@ $ ping username.github.io
 ### 更改字体服务商
 
 我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
-找到``layouts/partials/head_includes.html``文件：
+找到 layouts/partials/head_includes.html 文件：
 
 ```html
 <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -326,7 +328,6 @@ $ ping username.github.io
 #### 参考文章：
 
 + [nanshu'blog](http://nanshu.wang)
-
 + [coderzh blog](http://blog.coderzh.com/)
-
++ [jianshu' share](http://www.jianshu.com/p/b66754c0baa6)
 + [gohugo](http://gohugo.io) 和 [wecker](http://wercker.com)的官方blog
