@@ -22,6 +22,8 @@ topics = ["book"]
 10. the since of programminging
 11. advanced data structures
 
+<!--more-->
+
 ### C语言
 
 1. k&r c

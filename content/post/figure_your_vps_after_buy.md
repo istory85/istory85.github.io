@@ -14,6 +14,8 @@ topics = ["vps"]
 
 我一直喜欢用centos，所以这次选了的是最新的centos7_64版本，它有了大幅度的更新，比如防火墙从 iptables 换成了 firewalld，service 换成了 systemctl，还有别的很多地方都跟我以前熟悉的6有了比较大区别，所以我需要记录下来。
 
+<!--more-->
+
 ### 安装epel源，并且更新系统
 
 ```
@@ -83,6 +85,14 @@ $swapon /var/swap
 $swapoff /var/swap
 $rm /var/swap
 ```
+
+### 配置hosts.deny文件预防暴力破解
+```
+vi /etc/hosts.deny
+
+将东北大学的host黑名单下载复制进去[hosts.deny](http://antivirus.neu.edu.cn/ssh/lists/hosts.deny)
+```
+
 
 ### 安装fail2ban禁止ssh暴力破解
 

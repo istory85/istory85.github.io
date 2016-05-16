@@ -36,4 +36,4 @@ sidemenu = "true"
 - Hosted from my GitHub [repository](//github.com/istory85/miantiao.ml)
 - Theme is based on Yahoo's Pure CSS layout [here](//purecss.io/layouts/side-menu/) (I've modified it so that it can be used with Hugo)
 - Icons are from [Font Awesome](//fontawesome.io/)
-- Fonts from [360 Fonts](//www.useco.com/)
+- Fonts from [google Fonts](//www.googleapis.com/)
