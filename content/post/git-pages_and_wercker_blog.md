@@ -326,6 +326,7 @@ $ ping username.github.io
 
 将其中的googleapis替换为useso就行了。
 
+至于怎么自动化更新，请大家自行查阅 wercker网站，=_=
 
 #### 参考文章：
 
