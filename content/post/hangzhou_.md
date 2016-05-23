@@ -38,3 +38,4 @@ topics = ["life"]
 {{% fluid_img class="pure-u-1-1" src="/img/post/xihu_7.jpg" alt="xihu_7" %}}
 
 {{% fluid_img class="pure-u-1-1" src="/img/post/xihu_8.jpg" alt="xihu_8" %}}
+
