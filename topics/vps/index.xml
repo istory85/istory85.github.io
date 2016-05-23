@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vps on 海岸突起山岚</title>
+    <link>http://miantiao.ml/topics/vps/</link>
+    <description>Recent content in Vps on 海岸突起山岚</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 14 May 2016 22:40:29 +0800</lastBuildDate>
+    <atom:link href="http://miantiao.ml/topics/vps/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>对新vps必要的安全设置</title>
+      <link>http://miantiao.ml/post/figure_your_vps_after_buy/</link>
+      <pubDate>Sat, 14 May 2016 22:40:29 +0800</pubDate>
+      
+      <guid>http://miantiao.ml/post/figure_your_vps_after_buy/</guid>
+      <description>
+
+&lt;h3 id=&#34;以作备忘:2037959e2744d472acb921a705250b59&#34;&gt;以作备忘&lt;/h3&gt;
+
+&lt;p&gt;最近vultr在做活动，新手冲钱送20$，我按捺不住的冲了5$，正好拿来跑测试网站。&lt;/p&gt;
+
+&lt;p&gt;我一直喜欢用centos，所以这次选了的是最新的centos7_64版本，它有了大幅度的更新，比如防火墙从 iptables 换成了 firewalld，service 换成了 systemctl，还有别的很多地方都跟我以前熟悉的6有了比较大区别，所以我需要记录下来。&lt;/p&gt;
+
+&lt;h3 id=&#34;安装epel源-并且更新系统:2037959e2744d472acb921a705250b59&#34;&gt;安装epel源，并且更新系统&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$yum -y install epel-release
+$yum update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;创建新用户并赋权-禁止root登陆-更换ssh端口号-并且在防火墙放行必要端口:2037959e2744d472acb921a705250b59&#34;&gt;创建新用户并赋权，禁止root登陆，更换ssh端口号，并且在防火墙放行必要端口&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#创建用户
+$useradd jam -d /home/jam -m -s /bin/bash
+$passwd jam
+
+#赋予权限
+$visudo
+root    ALL=(ALL)       ALL
+jam     ALL=(ROOT)NOPASSWD：   All
+
+#编辑ssh配置
+$ vi /etc/ssh/sshd_config
+Port  12345  #修改端口
+PermitRootLogin no   #禁止root登陆
+AllowUsers jam
+
+$systemctl restart sshd.service
+
+#当然用密钥登陆，而禁止密码登陆最好
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编辑防火墙配置，放行 12345端口&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.命令方法
+$firewall-cmd –permanent –add-port=12345/tcp
+$systemctl restart firewalld.service
+
+2.修改配置方法
+$cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/
+$vi /etc/firewalld/services/ssh.xml
+
+$&amp;lt;port protocol=&amp;quot;tcp&amp;quot; port=&amp;quot;2345&amp;quot;/&amp;gt;
+
+$systemctl start firewalld.service
+$systemctl enable firewalld.service
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;开启selinux-可选:2037959e2744d472acb921a705250b59&#34;&gt;开启SELINUX（可选）&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$vi /etc/selinux/config
+SELINUX=enforcing       #(enforcing为开启，disabled为关闭)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;增加swap分区:2037959e2744d472acb921a705250b59&#34;&gt;增加SWAP分区&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;#查看分区情况
+$free -m
+
+#增加 swap分区，容量为1GB
+$dd if=/dev/zero of=/var/swap bs=1024 count=1024000
+
+#设置交换文件
+$mkswap /var/swap
+
+#立即激活启用交换分区
+$swapon /var/swap
+
+#收回swap空间
+$swapoff /var/swap
+$rm /var/swap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;配置hosts-deny文件预防暴力破解:2037959e2744d472acb921a705250b59&#34;&gt;配置hosts.deny文件预防暴力破解&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;vi /etc/hosts.deny
+
+将东北大学的host黑名单下载复制进去[hosts.deny](http://antivirus.neu.edu.cn/ssh/lists/hosts.deny)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;安装fail2ban禁止ssh暴力破解:2037959e2744d472acb921a705250b59&#34;&gt;安装fail2ban禁止ssh暴力破解&lt;/h3&gt;
+
+&lt;p&gt;需要安装支持 firewalld 的 fail2ban&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum -y install fail2ban-firewalld fail2ban-systemd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新建配置 jail.local&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[DEFAULT]
+bantime = 86400  #一旦触犯，ban一整天，也就是这些秒
+usedns = no      #这个必须关闭，否则影响 tail -f /var/log/fail2ban。。的输出
+enabled = false   #总开关默认为false不能改，需要哪个服务单独写
+banaction = firewallcmd-ipset  #禁止ip的方法
+action = %(action_)s    #采取的措施为， 仅仅ban掉
+
+[sshd]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+action = %(action_)s
+
+[sshd-ddos]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+action = %(action_)s
+
+
+$systemctl enable fail2ban
+$systemctl restart fail2ban.service
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看fail2ban的运行状况
+&lt;code&gt;$systemctl status fail2ban&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看实时禁止状况
+&lt;code&gt;$tail -f /var/log/fail2ban.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;查看已经禁止ip列表
+&lt;code&gt;ipset --list&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;参考文章:2037959e2744d472acb921a705250b59&#34;&gt;参考文章&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ifshow.com/centos-7-install-fail2ban-with-firewalld-to-defend-brute-force-password/&#34;&gt;ifshow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.freehao123.com/linux-vps-root/&#34;&gt;freehao123&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

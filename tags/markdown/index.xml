@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on 海岸突起山岚</title>
+    <link>http://miantiao.ml/tags/markdown/</link>
+    <description>Recent content in Markdown on 海岸突起山岚</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 14 May 2016 15:36:17 +0800</lastBuildDate>
+    <atom:link href="http://miantiao.ml/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Markdown语法</title>
+      <link>http://miantiao.ml/post/test-markdown/</link>
+      <pubDate>Sat, 14 May 2016 15:36:17 +0800</pubDate>
+      
+      <guid>http://miantiao.ml/post/test-markdown/</guid>
+      <description>
+
+&lt;h1 id=&#34;markdown-语法说明:f9d6f87bbe042987a4e7a0f97beb3269&#34;&gt;Markdown 语法说明&lt;/h1&gt;
+
+&lt;p&gt;There is a good tech article.&lt;a href=&#34;https://www.texide.com/help/markdown_syntax&#34;&gt;watch&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;###加粗字体示例&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;列表示例 +++&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;red&lt;/strong&gt;: 这是红色&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;blue&lt;/strong&gt;: 这是蓝色&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;green&lt;/strong&gt;: 这是绿色&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;链接示例&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://miantiao.ml&#34;&gt;你好，中国&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;分割线示例&amp;mdash;&amp;ndash;&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;嵌套示例&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这是第一段&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这是第二段&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这是第三段&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;代码块用 3个&lt;/code&gt;`&lt;code&gt;包围，上下都有&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i in range(4):
+    print i
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;表格示例&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;name&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;value&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;qty&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;computer&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1000 usd&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;phone&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;12 usd&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;code&gt;图片示例&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+&lt;div class=&#34;pure-u-1-1&#34;&gt;
+  &lt;img class=&#34;pure-img&#34; src=&#34;http://miantiao.ml/img/post/1111.jpg&#34; alt=&#34;name?&#34;&gt;
+&lt;/div&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

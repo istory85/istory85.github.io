@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on 海岸突起山岚</title>
+    <link>http://miantiao.ml/topics/book/</link>
+    <description>Recent content in Book on 海岸突起山岚</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 14 May 2016 22:40:13 +0800</lastBuildDate>
+    <atom:link href="http://miantiao.ml/topics/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>计算机类书籍推荐</title>
+      <link>http://miantiao.ml/post/books/</link>
+      <pubDate>Sat, 14 May 2016 22:40:13 +0800</pubDate>
+      
+      <guid>http://miantiao.ml/post/books/</guid>
+      <description>
+
+&lt;h3 id=&#34;算法类:dbc19c2f13d02e3f5b18602966a5728f&#34;&gt;算法类&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据结构与算法分析-C语言版&lt;/li&gt;
+&lt;li&gt;算法设计与分析（韩军）&lt;/li&gt;
+&lt;li&gt;算法引论，一种创造性方法&lt;/li&gt;
+&lt;li&gt;算法导论&lt;/li&gt;
+&lt;li&gt;算法&lt;/li&gt;
+&lt;li&gt;编程珠玑，更多的编程珠玑&lt;/li&gt;
+&lt;li&gt;c interfaces and implementation&lt;/li&gt;
+&lt;li&gt;algorithms on strings, trees and sequences&lt;/li&gt;
+&lt;li&gt;the algorithm design maunal&lt;/li&gt;
+&lt;li&gt;the since of programminging&lt;/li&gt;
+&lt;li&gt;advanced data structures&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;c语言:dbc19c2f13d02e3f5b18602966a5728f&#34;&gt;C语言&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;k&amp;amp;r c&lt;/li&gt;
+&lt;li&gt;c primer（plus）&lt;/li&gt;
+&lt;li&gt;c专家编程&lt;/li&gt;
+&lt;li&gt;c与指针&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;python:dbc19c2f13d02e3f5b18602966a5728f&#34;&gt;python&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;python编程实践&lt;/li&gt;
+&lt;li&gt;python简明教程&lt;/li&gt;
+&lt;li&gt;Learn Python the Hard Way&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.woodpecker.org.cn/moin/PyAbsolutelyZipManual&#34;&gt;python绝对简明教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;python核心编程&lt;/li&gt;
+&lt;li&gt;flask web开发&lt;/li&gt;
+&lt;li&gt;effective python&lt;/li&gt;
+&lt;li&gt;利用python进行数据分析&lt;/li&gt;
+&lt;li&gt;python web爬虫&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;golang:dbc19c2f13d02e3f5b18602966a5728f&#34;&gt;golang&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;effective go中文版&lt;/li&gt;
+&lt;li&gt;the way to go&lt;/li&gt;
+&lt;li&gt;go语言编程&lt;/li&gt;
+&lt;li&gt;go web编程&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

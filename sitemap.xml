@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://miantiao.ml/</loc>
+    <lastmod>2016-05-23T08:55:05+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/hangzhou_/</loc>
+    <lastmod>2016-05-23T08:55:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/something_healthy/</loc>
+    <lastmod>2016-05-16T16:43:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/about/</loc>
+    <lastmod>2016-05-14T17:12:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/figure_your_vps_after_buy/</loc>
+    <lastmod>2016-05-14T22:40:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/deploy_flask/</loc>
+    <lastmod>2016-05-14T22:40:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/books/</loc>
+    <lastmod>2016-05-14T22:40:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/git-pages_and_wercker_blog/</loc>
+    <lastmod>2016-05-14T20:35:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/post/test-markdown/</loc>
+    <lastmod>2016-05-14T15:36:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://miantiao.ml/dairy/</loc>
+    <lastmod>2016-05-12T09:59:20+08:00</lastmod>
+  </url>
+  
+</urlset>

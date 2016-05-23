@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on 海岸突起山岚</title>
+    <link>http://miantiao.ml/topics/web/</link>
+    <description>Recent content in Web on 海岸突起山岚</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 14 May 2016 22:40:20 +0800</lastBuildDate>
+    <atom:link href="http://miantiao.ml/topics/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>centos7上nginx,gunicorn,supervisor部署flask网站</title>
+      <link>http://miantiao.ml/post/deploy_flask/</link>
+      <pubDate>Sat, 14 May 2016 22:40:20 +0800</pubDate>
+      
+      <guid>http://miantiao.ml/post/deploy_flask/</guid>
+      <description>
+
+&lt;p&gt;digital ocean 和 vultr 是两个处于5$价位很好的vps供应商，购买可以用我的链接哦
+&lt;a href=&#34;http://www.vultr.com/?ref=6889905&#34;&gt;购买vultr&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我们目标实现一个支持多个独立域名网站的线上Python环境，这会用到Virtualenv， Flask， Gunicorn， Supervisor， Nginx。&lt;/p&gt;
+
+&lt;h3 id=&#34;配置用户环境:7d350297e80dca7d005a92d40faf9b07&#34;&gt;配置用户环境&lt;/h3&gt;
+
+&lt;p&gt;一个vps可以跑多个站，最好将它们完全隔离，每个站对应一个用户。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;User        Site
+bob         website     ##bob用户有一个dylan的站
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置好的目录树应该为这样&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. /home/bob/
+   1. logs
+       1. access.log
+       2. error.log
+       3. gunicorn_supervisor.logs
+   2. website
+      1. gunicorn.conf
+      2. hello.py
+      3. venv/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建用户并且赋予sudo权限&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;useradd bob -d /home/bob -m -s /bin/bash
+passwd bob
+
+visudo 或 sudo vim /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;全局安装 pip, nginx, vritualenv, supervisor&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum -y install nginx, python-pip, supervisor
+pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装flask环境，同时在虚环境里安装gunicorn&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /home/bob
+mkdir website/
+cd website/
+
+#安装虚幻境，安装flask，gunicorn
+virtualenv venv
+source venv/bin/activate
+
+pip install flask
+pip install gunicorn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;deploy-flask并且设置好gunicorn:7d350297e80dca7d005a92d40faf9b07&#34;&gt;deploy flask并且设置好gunicorn&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;vi hello.py
+
+##写入Flask的Hello World
+
+from flask import Flask
+app = Flask(__name__)
+@app.route(&#39;/&#39;)
+def hello_world():
+    return &#39;Hello World!&#39;
+    if __name__ == &#39;__main__&#39;:
+        app.run()
+
+cd /home/bob/website
+#写入gunicorn配置
+vi gunicorn.conf
+
+workers = 4
+bind = &#39;127.0.0.1:8001&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;配置supervisor:7d350297e80dca7d005a92d40faf9b07&#34;&gt;配置supervisor&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#配置文件在 /etc/supervisord.d/website.ini
+
+[program:website]
+command=/home/bob/website/venv/bin/gunicorn hello:app -c /home/bob/website/gunicorn.conf
+directory=/home/bob/website
+user=bob
+autostart=true
+autorestart=true
+
+stdout_logfile=/home/bob/logs/gunicorn_supervisor.log
+
+#启动supervisor
+sudo supervisord -c /etc/supervisord.conf
+
+#控制台
+sudo supervisorctl
+    status 查看当前运行的实例状态，running or failed
+    restart start or stop
+    reload 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程
+    update 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启
+
+#注意：显示用stop停止掉的进程，用reload或者update都不会自动重启。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;配置nginx:7d350297e80dca7d005a92d40faf9b07&#34;&gt;配置nginx&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$sudo vi /etc/nginx/conf.d/website.conf 
+
+server{
+        listen 80;
+        server_name  xxx你的域名
+
+        root /home/bob/website/;
+        access_log /home/bob/logs/access.log;
+        error_log /home/bob/logs/error.log;
+
+        location / {
+                proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+
+                if (!-f $request_filename) {
+                        proxy_pass http://127.0.0.1:8001; //gunicorn的端口
+                        break;
+                }
+        }
+}
+
+sudo systemctl start nginx
+
+#当然，如果有静态文件，直接可以在nginx配置访问
+
+#配置静态文件转发
+location ~.*(js|css|png|gif|jpg|mp3|ogg)$ {
+        root /home/bob/website/static/xxxx;
+}
+
+#配置静态页面转发
+location ~.*(html)$ {
+        root /home/bob/website/app/app_static_pages/;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果你完成以上，并配置以下host文件，相信访问域名就可以看到一个运转良好的网站了。
+当然，如果是部署到大集群上，可能会用到fabic。&lt;/p&gt;
+
+&lt;p&gt;now, enjoy it.&lt;/p&gt;
+
+&lt;h3 id=&#34;参考文章:7d350297e80dca7d005a92d40faf9b07&#34;&gt;参考文章&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://beiyuu.com/vps-config-python-vitrualenv-flask-gunicorn-supervisor-nginx/&#34;&gt;beiyuu&amp;rsquo;s blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://realpython.com/blog/python/kickstarting-flask-on-ubuntu-setup-and-deployment/&#34;&gt;realpython&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.simpleapples.com/2015/06/configure-nginx-supervisor-gunicorn-flask/&#34;&gt;simpleapples&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

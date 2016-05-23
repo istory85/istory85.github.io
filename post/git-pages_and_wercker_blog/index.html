@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="程序员博客,python,golang,算法,数据挖掘,网站技术,读书,笔记,翻译">
+  <meta name="baidu-site-verification" content="66Kp8ELier" />
+  <meta name="google-site-verification" content="ed7UHgFGx1EDIcyvVZ6ubl3v-yFU_cIfddREdsMQwuk" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="本篇文章是教大家用git-pages来写博客">
+  <meta name="generator" content="Hugo 0.15" />
+
+  <title>以github-pages来写博客 &middot; 海岸突起山岚</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://miantiao.ml/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://miantiao.ml/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://miantiao.ml/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://miantiao.ml/img/favicon.ico" type="image/x-icon" />
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?82914c0b90fc4148fa5cf32a58fca763";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  <a class="pure-menu-heading brand" href="http://miantiao.ml/">
+  <img src="http://miantiao.ml/img/logo.png" width="35px">
+</a>
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/dairy/"><i class='fa fa-user fa-fw'></i>Dairy</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/topics/"><i class='fa fa-folder fa-fw'></i>Topics</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="http://weibo.com/yoshiforshort" target="_blank"><i class="fa fa-weibo fa-fw"></i>Weibo</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/istory85" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>以github-pages来写博客</h1>
+  <h2>本篇文章是教大家用git-pages来写博客</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>14 May 2016</time>
+  </div>
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-folder fa-fw"></i>
+    
+      <a class="post-taxonomy-topic" href="http://miantiao.ml/topics/blog">blog</a>
+    
+  </div>
+  
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://miantiao.ml/tags/git-pages">git-pages</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://miantiao.ml/tags/wercker">wercker</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>本篇文章旨在引领人们享受写作的乐趣，而不是“工欲善其事，必先利其器”</p>
+
+<h3 id="背景以及准备工作:4f72c81fb3d753ef84ce0db82cdd574e">背景以及准备工作</h3>
+
+<p>相信每一个好的技术人员都有记录思想，工作经验，学习笔记等等多好习惯，而一个运行良好的blog不可或缺。所以这次我们以github pages来做一个blog。</p>
+
+<p>github是人们常用的版本控制工具，相信每个程序员都听说过。啥？你不知道，你一定是火星来的。:)-
+hugo是一个前docker重量级员工跳出来搞的一个静态网页生成器，使用golang写的。
+wercker是一个以docker为基础的持续性代码部署云服务。
+好的，下面，我们开始吧:</p>
+
+<h3 id="安装hugo:4f72c81fb3d753ef84ce0db82cdd574e">安装hugo</h3>
+
+<p>由于我用的是centos_64位，所以在hugo的github上下载<a href="https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz">hugo_0.15_linux_amd64.tar.gz</a>这个软件包。
+解压：</p>
+
+<pre><code>$ tar -xzvf hugo_0.15_linux_amd64.tar.gz
+</code></pre>
+
+<p>得到一个可执行的二进制go程序，改个短名字，如hugo，并把它放到/opt下，加入系统变量中
+编辑 /etc/profile</p>
+
+<pre><code>$ mv hugo /opt
+$ vi /etc/profile
+$ export HUGOROOT=/opt
+$ export PATH=$PATH::$HUGOROOT
+</code></pre>
+
+<p>然后就可以使用hugo来生成网站了,mysite是网站的路径</p>
+
+<pre><code>$ hugo new site mysite
+</code></pre>
+
+<p>然后进入该路径</p>
+
+<pre><code>$ cd mysite
+</code></pre>
+
+<p>在该目录下你可以看到以下几个目录和config.toml文件</p>
+
+<pre><code>+ archetypes/ 
++ content/
++ layouts/
++ static/
+  config.toml
+</code></pre>
+
+<p>config.toml是网站的配置文件，包括baseurl, title, copyright等等网站参数。</p>
+
+<p>这几个文件夹的作用分别是：</p>
+
+<ul>
+<li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
+<li>content：包括网站内容，全部使用markdown格式</li>
+<li>layouts：包括了网站的模版，决定内容如何呈现</li>
+<li>static：包括了css, js, fonts, media等，决定网站的外观</li>
+</ul>
+
+<p>Hugo提供了一些完整的主题可以使用，下载这些主题：</p>
+
+<pre><code>$ git clone --recursive https://github.com/spf13/hugoThemes themes
+</code></pre>
+
+<p>此时现成的主题存放在themes/文件夹中。</p>
+
+<p>现在我们先熟悉一下Hugo，创建新页面：</p>
+
+<pre><code>$ hugo new about.md
+</code></pre>
+
+<p>进入content/文件夹可以看到，此时多了一个markdown格式的文件about.md，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。</p>
+
+<p>我在页面中加入了一些内容，然后运行Hugo:</p>
+
+<pre><code>$ hugo server -t hyde --buildDrafts
+</code></pre>
+
+<p>-t参数的意思是使用hyde主题渲染我们的页面，注意到about.md目前是作为草稿，即draft参数设置为true，运行Hugo时要加上&ndash;buildDrafts参数才会生成被标记为草稿的页面。
+在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。</p>
+
+
+<div class="pure-u-1-1">
+  <img class="pure-img" src="http://miantiao.ml/img/post/hugo-server-1.png" alt="name?">
+</div>
+
+
+<p>注意观察当前目录下多了一个文件夹public/，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将public/里的文件上传就可以，这相当于是Hugo的输出。</p>
+
+<h3 id="主题选择:4f72c81fb3d753ef84ce0db82cdd574e">主题选择</h3>
+
+<p>进入themes/hyde文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是layouts/和static/这两个文件内，选择好一个主题后，可以将themes/中的文件夹直接复制到mysite/目录下，覆盖原来的layouts/, static/文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css, js, html等文件。</p>
+
+<p>我的博客模版是在Hugo作者spf13的<a href="http://spf13.com">博客</a>基础上修改的。第一步，先去他的博客网站源码<a href="https://github.com/spf13/spf13.com">主页</a>把整个项目clone下来</p>
+
+<pre><code>$ git clone git@github.com:spf13/spf13.com.git
+</code></pre>
+
+<p>把项目中的static/和layouts/文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:</p>
+
+<pre><code>$ hugo server --buildDrafts -w
+</code></pre>
+
+<p>这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：</p>
+
+
+<div class="pure-u-1-1">
+  <img class="pure-img" src="http://miantiao.ml/img/post/hugo-server-2.png" alt="name?">
+</div>
+
+
+<p>我们尝试在他的主题基础上修改，找到/layouts/partials/subheader.html文件:</p>
+
+<pre><code class="language-html">&lt;header id=&quot;header&quot;&gt;
+    &lt;figure&gt;
+      &lt;a href=&quot;/&quot; border=0 id=&quot;logolink&quot;&gt;&lt;div class=&quot;icon-spf13-3&quot; id=&quot;logo&quot;&gt; &lt;/div&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+    &lt;div id=&quot;byline&quot;&gt;by Steve Francia&lt;/div&gt;
+    &lt;nav id=&quot;nav&quot;&gt;
+    {{ partial &quot;nav.html&quot; . }}
+    {{ partial &quot;social.html&quot; . }}
+    &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+
+<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。</p>
+
+
+<div class="pure-u-1-1">
+  <img class="pure-img" src="http://miantiao.ml/img/post/hugo-server-change.png" alt="name?">
+</div>
+
+
+<h3 id="评论功能:4f72c81fb3d753ef84ce0db82cdd574e">评论功能</h3>
+
+<p>个人博客当然不能没有评论，Hugo默认支持<a href="https://disqus.com/">Disqus</a>的评论，需要在模版中添加以下代码：</p>
+
+<pre><code>{{ template &quot;_internal/disqus.html&quot; . }}
+</code></pre>
+
+<p>spf13在/layouts/partials/disqus.html中已经添加好了。</p>
+
+<p>只需要去Disqus注册一个账号，然后在config.toml里加上：</p>
+
+<pre><code>disqusShortname = &quot;yourdisqusShortname&quot;
+</code></pre>
+
+<p>注意-w参数是不能监测config.toml里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。</p>
+
+
+<div class="pure-u-1-1">
+  <img class="pure-img" src="http://miantiao.ml/img/post/comments.png" alt="name?">
+</div>
+
+
+<h3 id="代码高亮:4f72c81fb3d753ef84ce0db82cdd574e">代码高亮</h3>
+
+<p>作为码农，代码高亮对于写博客来说当然必不可少。有两种方法：第一种是在生成页面时就生成好代码高亮过的页面；第二种是使用js，用户加载页面时浏览器再进行渲染。</p>
+
+<p>第一种方法需要使用<a href="http://pygments.org/">Pygments</a>，一个python写的工具。</p>
+
+<p>安装Pygments：</p>
+
+<pre><code class="language-shell">$ pip install Pygments
+</code></pre>
+
+<p>没有pip的先下载 <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> ，然后安装pip：</p>
+
+<pre><code class="language-shell">$ python get-pip.py
+</code></pre>
+
+<p>Pygments的调用采用shortcodes实现，spf13里也写好了，在/layouts/shortcode/highlight.html里</p>
+
+<pre><code>{{ $lang := index .Params 0 }}
+{{ highlight .Inner $lang }}
+</code></pre>
+
+<p>要使代码高亮，在你的代码外面加上：</p>
+
+<pre><code>{{ % highlight python %}}
+your code here.
+{{ % /highlight %}}
+</code></pre>
+
+<p>这里为了避免以上两行被识别为代码高亮的标识，在 {{ 和 % 之间多加了一个空格，实际使用的时候需要把空格去掉。</p>
+
+<p>第二种方法比较简单，在layouts/partials/header_includes.html中加上：</p>
+
+<pre><code>&lt;script src=&quot;https://yandex.st/highlightjs/8.0/highlight.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&quot;&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+</code></pre>
+
+<p>这里使用了<a href="http://yandex.ru/">Yandex</a>的<a href="http://highlightjs.org/">Highlight.js</a>。</p>
+
+<p>其他的可以实现代码高亮的js库还有：</p>
+
+<ul>
+<li><a href="http://highlightjs.org/">Highlight.js</a></li>
+<li><a href="http://craig.is/making/rainbows">Rainbow</a></li>
+<li><a href="http://alexgorbatchev.com/SyntaxHighlighter/">Syntax Highlighter</a></li>
+<li><a href="https://code.google.com/p/google-code-prettify/">Google Prettify</a></li>
+</ul>
+
+<h3 id="插入图片:4f72c81fb3d753ef84ce0db82cdd574e">插入图片</h3>
+
+<p>图片文件放在static/media文件中，插入图片：</p>
+
+<pre><code>{{ % img src=&quot;/media/example.jpg&quot; alt=&quot;example&quot; %}}
+</code></pre>
+
+<p>注意这里的 {{ 和 % 之间也加上了空格，避免这行代码起作用，实际使用也需要把空格去掉。</p>
+
+<h3 id="使用mathjax:4f72c81fb3d753ef84ce0db82cdd574e">使用Mathjax</h3>
+
+<p>在需要渲染公式的页面加入以下代码，比如 layouts/_default/single.html 文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入<code>layouts/partials/footer.html</code>文件里，保证所有生成的页面都有这几行代码。</p>
+
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;
+  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+
+<p>Mathjax和Markdown会有冲突问题，<a href="http://doswa.com/2011/07/20/mathjax-in-markdown.html">这里</a>提供了解决方案。</p>
+
+<h3 id="用github-pages作为网站的host:4f72c81fb3d753ef84ce0db82cdd574e">用github pages作为网站的Host</h3>
+
+<p>Github pages分为两种：一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。</p>
+
+<p>因为用户主页只能有一个，所以建议使用项目主页托管，不过我这里采用了用户主页，反正我也只用一个博客，使用个人主页作为Host也相对更简单一点。</p>
+
+<p>我们需要创建两个单独的repo，一个用于放Hugo的输入文件，即除了 public/ 文件夹之外的所有文件，另一个放我们生成的静态网站，也就是 public/ 的内容。</p>
+
+<p>步骤如下：</p>
+
+<ol>
+<li>在Github上创建repo  <your-project>-hugo ，托管Hugo的输入文件。</li>
+<li>创建repo  <username>.github.io ，用于托管 public/ 文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。</li>
+<li>clone your-project
+<code>
+$ git clone &lt;&lt;your-project&gt;-hugo-url&gt;
+</code></li>
+<li>进入your-project 目录</li>
+</ol>
+
+<pre><code>$ cd &lt;your-project&gt;-hugo
+</code></pre>
+
+<ol>
+<li>删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）
+<code>
+$ rm -rf public
+</code></li>
+<li>把public/目录添加为submodule 与<username>.github.io同步
+<code>
+$ git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public
+</code></li>
+<li>添加.gitignore文件，文件中写 public/ ，在同步 <your-project>-hugo 时会忽略public文件夹</li>
+<li>下面是写好的一个script  deploy.sh ，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。</li>
+</ol>
+
+<pre><code class="language-bash">#!/bin/bash
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+
+# Push Hugo content 
+git add -A
+git commit -m &quot;$msg&quot;
+git push origin master
+
+
+# Build the project. 
+hugo # if using a theme, replace by `hugo -t &lt;yourtheme&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add -A
+
+# Commit changes.
+
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back
+cd ..
+
+</code></pre>
+
+<p>等一小会儿（10分钟左右），你就能在<a href="http://username.github.io/">http://username.github.io/</a> 这个页面看到你的网站了！每次更新网站或者写了新文章，只需要运行./deploy.sh 发布就搞定了，简单吧？</p>
+
+<p>Github pages还支持域名绑定，三个步骤：</p>
+
+<ol>
+<li>在 <username>.github.io repo的跟目录下添加 CNAME 文件，文件里写上你的域名，不用加http://的开头。</li>
+<li>记下<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址。
+<code>
+$ ping username.github.io
+</code></li>
+<li>在你的域名管理中加上两条A记录，分别是www和@，记录指向<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址，也需要等一小会儿生效。</li>
+</ol>
+
+<h3 id="更改字体服务商:4f72c81fb3d753ef84ce0db82cdd574e">更改字体服务商</h3>
+
+<p>我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
+找到 layouts/partials/head_includes.html 文件：</p>
+
+<pre><code class="language-html">&lt;link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'&gt;
+</code></pre>
+
+<p>将其中的googleapis替换为useso就行了。</p>
+
+<p>至于怎么自动化更新，请大家自行查阅 wercker网站，=_=</p>
+
+<h4 id="参考文章:4f72c81fb3d753ef84ce0db82cdd574e">参考文章：</h4>
+
+<ul>
+<li><a href="http://nanshu.wang">nanshu&rsquo;blog</a></li>
+<li><a href="http://blog.coderzh.com/">coderzh blog</a></li>
+<li><a href="http://www.jianshu.com/p/b66754c0baa6">jianshu&rsquo; share</a></li>
+<li><a href="http://gohugo.io">gohugo</a> 和 <a href="http://wercker.com">wecker</a>的官方blog</li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://miantiao.ml/post/test-markdown/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://miantiao.ml/post/test-markdown/">Markdown语法</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://miantiao.ml/post/books/">计算机类书籍推荐</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://miantiao.ml/post/books/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'qmc2';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://miantiao.ml/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77714604-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+

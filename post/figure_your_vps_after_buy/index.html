@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="程序员博客,python,golang,算法,数据挖掘,网站技术,读书,笔记,翻译">
+  <meta name="baidu-site-verification" content="66Kp8ELier" />
+  <meta name="google-site-verification" content="ed7UHgFGx1EDIcyvVZ6ubl3v-yFU_cIfddREdsMQwuk" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="网络安全很重要，很重要，很重要">
+  <meta name="generator" content="Hugo 0.15" />
+
+  <title>对新vps必要的安全设置 &middot; 海岸突起山岚</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="http://miantiao.ml/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="http://miantiao.ml/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="http://miantiao.ml/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="http://miantiao.ml/img/favicon.ico" type="image/x-icon" />
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?82914c0b90fc4148fa5cf32a58fca763";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  <a class="pure-menu-heading brand" href="http://miantiao.ml/">
+  <img src="http://miantiao.ml/img/logo.png" width="35px">
+</a>
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/dairy/"><i class='fa fa-user fa-fw'></i>Dairy</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/topics/"><i class='fa fa-folder fa-fw'></i>Topics</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="http://miantiao.ml/tags/"><i class='fa fa-tags fa-fw'></i>Tags</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="http://weibo.com/yoshiforshort" target="_blank"><i class="fa fa-weibo fa-fw"></i>Weibo</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/istory85" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016. All rights reserved.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>对新vps必要的安全设置</h1>
+  <h2>网络安全很重要，很重要，很重要</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>14 May 2016</time>
+  </div>
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-folder fa-fw"></i>
+    
+      <a class="post-taxonomy-topic" href="http://miantiao.ml/topics/vps">vps</a>
+    
+  </div>
+  
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://miantiao.ml/tags/vps">vps</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://miantiao.ml/tags/%E5%AE%89%E5%85%A8">安全</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://miantiao.ml/tags/centos7">centos7</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<h3 id="以作备忘:2037959e2744d472acb921a705250b59">以作备忘</h3>
+
+<p>最近vultr在做活动，新手冲钱送20$，我按捺不住的冲了5$，正好拿来跑测试网站。</p>
+
+<p>我一直喜欢用centos，所以这次选了的是最新的centos7_64版本，它有了大幅度的更新，比如防火墙从 iptables 换成了 firewalld，service 换成了 systemctl，还有别的很多地方都跟我以前熟悉的6有了比较大区别，所以我需要记录下来。</p>
+
+<h3 id="安装epel源-并且更新系统:2037959e2744d472acb921a705250b59">安装epel源，并且更新系统</h3>
+
+<pre><code>$yum -y install epel-release
+$yum update
+</code></pre>
+
+<h3 id="创建新用户并赋权-禁止root登陆-更换ssh端口号-并且在防火墙放行必要端口:2037959e2744d472acb921a705250b59">创建新用户并赋权，禁止root登陆，更换ssh端口号，并且在防火墙放行必要端口</h3>
+
+<pre><code class="language-bash">#创建用户
+$useradd jam -d /home/jam -m -s /bin/bash
+$passwd jam
+
+#赋予权限
+$visudo
+root    ALL=(ALL)       ALL
+jam     ALL=(ROOT)NOPASSWD：   All
+
+#编辑ssh配置
+$ vi /etc/ssh/sshd_config
+Port  12345  #修改端口
+PermitRootLogin no   #禁止root登陆
+AllowUsers jam
+
+$systemctl restart sshd.service
+
+#当然用密钥登陆，而禁止密码登陆最好
+</code></pre>
+
+<p>编辑防火墙配置，放行 12345端口</p>
+
+<pre><code>1.命令方法
+$firewall-cmd –permanent –add-port=12345/tcp
+$systemctl restart firewalld.service
+
+2.修改配置方法
+$cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/
+$vi /etc/firewalld/services/ssh.xml
+
+$&lt;port protocol=&quot;tcp&quot; port=&quot;2345&quot;/&gt;
+
+$systemctl start firewalld.service
+$systemctl enable firewalld.service
+</code></pre>
+
+<h3 id="开启selinux-可选:2037959e2744d472acb921a705250b59">开启SELINUX（可选）</h3>
+
+<pre><code>$vi /etc/selinux/config
+SELINUX=enforcing       #(enforcing为开启，disabled为关闭)
+</code></pre>
+
+<h3 id="增加swap分区:2037959e2744d472acb921a705250b59">增加SWAP分区</h3>
+
+<pre><code>#查看分区情况
+$free -m
+
+#增加 swap分区，容量为1GB
+$dd if=/dev/zero of=/var/swap bs=1024 count=1024000
+
+#设置交换文件
+$mkswap /var/swap
+
+#立即激活启用交换分区
+$swapon /var/swap
+
+#收回swap空间
+$swapoff /var/swap
+$rm /var/swap
+</code></pre>
+
+<h3 id="配置hosts-deny文件预防暴力破解:2037959e2744d472acb921a705250b59">配置hosts.deny文件预防暴力破解</h3>
+
+<pre><code>vi /etc/hosts.deny
+
+将东北大学的host黑名单下载复制进去[hosts.deny](http://antivirus.neu.edu.cn/ssh/lists/hosts.deny)
+</code></pre>
+
+<h3 id="安装fail2ban禁止ssh暴力破解:2037959e2744d472acb921a705250b59">安装fail2ban禁止ssh暴力破解</h3>
+
+<p>需要安装支持 firewalld 的 fail2ban</p>
+
+<pre><code>yum -y install fail2ban-firewalld fail2ban-systemd
+</code></pre>
+
+<p>新建配置 jail.local</p>
+
+<pre><code>[DEFAULT]
+bantime = 86400  #一旦触犯，ban一整天，也就是这些秒
+usedns = no      #这个必须关闭，否则影响 tail -f /var/log/fail2ban。。的输出
+enabled = false   #总开关默认为false不能改，需要哪个服务单独写
+banaction = firewallcmd-ipset  #禁止ip的方法
+action = %(action_)s    #采取的措施为， 仅仅ban掉
+
+[sshd]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+action = %(action_)s
+
+[sshd-ddos]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+action = %(action_)s
+
+
+$systemctl enable fail2ban
+$systemctl restart fail2ban.service
+</code></pre>
+
+<p>查看fail2ban的运行状况
+<code>$systemctl status fail2ban</code></p>
+
+<p>查看实时禁止状况
+<code>$tail -f /var/log/fail2ban.log</code></p>
+
+<p>查看已经禁止ip列表
+<code>ipset --list</code></p>
+
+<h3 id="参考文章:2037959e2744d472acb921a705250b59">参考文章</h3>
+
+<ul>
+<li><a href="https://www.ifshow.com/centos-7-install-fail2ban-with-firewalld-to-defend-brute-force-password/">ifshow</a></li>
+<li><a href="http://www.freehao123.com/linux-vps-root/">freehao123</a></li>
+</ul>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://miantiao.ml/post/deploy_flask/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://miantiao.ml/post/deploy_flask/">centos7上nginx,gunicorn,supervisor部署flask网站</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="http://miantiao.ml/post/something_healthy/">一些有益的人或网站</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="http://miantiao.ml/post/something_healthy/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'qmc2';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://miantiao.ml/js/ui.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77714604-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
+
