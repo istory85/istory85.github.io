@@ -7,7 +7,7 @@ title = "Mood Dairy"
 topics = []
 
 +++
-##  生活它是一首抒情诗，只是偶尔我也会ri了狗----读书笔记
+##  生活它是一首抒情诗，只是偶尔我也会ri了狗----读书记录
 
 1. the way to go(刚到第6章)
-2. flask web开发(第9章)
+2. flask web开发
